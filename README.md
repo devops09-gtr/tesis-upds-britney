@@ -23,56 +23,75 @@ Se contrasta el modelo predictivo frente a una **linea base de reglas estaticas*
 
 ---
 
-## 🤖 Guia Rapida para Asistentes de IA (AI Agents & LLMs)
+## 📚 Estándares del Proyecto y Guías Metodológicas
 
-Si eres un modelo de Inteligencia Artificial (ChatGPT, Claude, Gemini, DeepSeek, etc.) asistiendo a Britney en esta tesis:
-1. **Lee obligatoriamente** el archivo [`docs/INSTRUCCIONES_IA.md`](docs/INSTRUCCIONES_IA.md) para conocer las reglas de trabajo, directrices eticas, estilo academico y formato UPDS (APA 7.ª ed.).
-2. **Revisa la planificacion completa** en [`docs/PLAN_DE_ACCION.md`](docs/PLAN_DE_ACCION.md).
-3. **Consulta la guia de ejecucion tecnica** en [`docs/GUIA_FASE_2.md`](docs/GUIA_FASE_2.md) antes de proponer cambios en el codigo o en la arquitectura del laboratorio.
+Para garantizar la máxima calidad técnica y metodológica, el proyecto se rige por los siguientes documentos en [`docs/`](docs/):
+
+| Documento | Descripción y Propósito |
+| :--- | :--- |
+| 📖 [**Guía de Implementación**](docs/GUIA_IMPLEMENTACION.md) | Arquitectura del banco emulado, topología, puesta en modo monitor y los 20 escenarios de ataque. |
+| ⚙️ [**Estándar de Ingeniería**](docs/ESTANDAR_INGENIERIA.md) | Normas PEP 8, registro obligatorio de las 600 corridas, seguridad y protocolos fail-safe. |
+| 📝 [**Estándar de Documentación de Tesis**](docs/ESTANDAR_DOCUMENTACION.md) | Estructura capitular UPDS 2026, APA 7.ª ed. (mínimo 30 fuentes) y regla de conclusiones por objetivos. |
+| 🔄 [**Flujo de Aprobación por PR**](docs/FLUJO_DE_APROBACION.md) | Cómo enviar avances y consultas mediante Pull Requests para revisión y aprobación del Tutor. |
+| 🤖 [**Instrucciones para la IA**](docs/INSTRUCCIONES_IA.md) | Directrices éticas, técnicas y de citas para ChatGPT / Claude / Gemini / DeepSeek. |
+| 📅 [**Plan de Acción Integral**](docs/PLAN_DE_ACCION.md) | Cronograma oficial de Grado II, hitos institucionales y desglose de capítulos. |
+
+---
+
+## 🤝 Modelo de Trabajo Tutor - Tesista (Flujo de Pull Requests)
+
+1. **La estudiante crea una rama:**
+   ```bash
+   git checkout -b feature/avance-fase2
+   ```
+2. **Desarrolla o redacta sus avances:**
+   * Agrega sus scripts o documentos.
+   * Ejecuta pruebas locales.
+3. **Envía un Pull Request (PR):**
+   * En GitHub abre un PR hacia `main`.
+   * La plantilla automática se cargará para describir el avance o formular dudas técnicas.
+4. **Revisión del Tutor:**
+   * El Tutor revisa el código o texto, deja sugerencias en línea y, cuando cumple los estándares, realiza el **Approve & Merge**.
 
 ---
 
 ## 📂 Estructura del Repositorio
 
 ```text
-├── docs/                      # Documentacion academica y guias metodologicas
-│   ├── INSTRUCCIONES_IA.md    # Directrices clave para la IA conversacional
-│   ├── PLAN_DE_ACCION.md      # Plan de accion integral (Capitulos, Hitos, Cronograma)
-│   └── GUIA_FASE_2.md         # Guia paso a paso para el despliegue del prototipo (Fase 2)
-├── src/                       # Codigo fuente del prototipo
-│   ├── capture/               # Scripts de captura Wi-Fi 802.11 y Zeek
-│   │   ├── wifi_monitor.py    # Capturador y parser de tramas 802.11 (Scapy/Tshark)
-│   │   └── zeek_runner.sh     # Script para ejecucion y rotacion de logs de Zeek
-│   ├── pipeline/              # Fision temporal y extraccion de caracteristicas
-│   │   └── feature_extractor.py # Agrupador por ventanas de 60 segundos
-│   ├── model/                 # Modelos de deteccion
-│   │   ├── isolation_forest.py # Detector no supervisado (Scikit-Learn)
-│   │   └── static_rules.py    # Detector de linea base (reglas y umbrales fijos)
-│   └── response/              # Scripts de mitigacion y respuesta automatizada
-│       └── responder.py       # Bloqueo temporal por iptables/MAC y alertas seguras
-├── experiments/               # Fichas experimentales, 20 escenarios y datasets de prueba
-│   ├── scenarios/             # Definicion de los 20 escenarios de ataque
-│   └── logs/                  # Registro de corridas y marcas de tiempo
-├── config/                    # Configuraciones de red, Zeek y parametros de modelo
-├── requirements.txt           # Dependencias Python
+├── docs/                      # Estándares, guías y documentos metodológicos
+│   ├── GUIA_IMPLEMENTACION.md # Guía técnica de arquitectura y los 20 escenarios
+│   ├── ESTANDAR_INGENIERIA.md # Estándar de código, logging de 600 pruebas y seguridad
+│   ├── ESTANDAR_DOCUMENTACION.md # Guía de redacción UPDS 2026 y APA 7.ª edición
+│   ├── FLUJO_DE_APROBACION.md # Mecánica de Pull Requests y revisión tutorial
+│   ├── INSTRUCCIONES_IA.md    # Reglas para la IA conversacional de Britney
+│   └── PLAN_DE_ACCION.md      # Cronograma e hitos de Modalidad de Grado II
+├── src/                       # Código fuente del prototipo
+│   ├── capture/               # Captura Wi-Fi 802.11 y Zeek runner
+│   ├── pipeline/              # Fusión temporal de características (ventanas 60s)
+│   ├── model/                 # Modelos Isolation Forest y Reglas Estáticas
+│   ├── response/              # Módulo de mitigación automatizada (iptables/fail-safe)
+│   └── test_pipeline.py       # Script de validación integral de extremo a extremo
+├── experiments/               # Fichas experimentales y datasets de prueba
+├── iniciar_entorno.bat         # Instalador y ejecutor de 1 solo clic para Windows
+├── setup_linux.sh             # Instalador automático para Ubuntu/Debian en Laboratorio
+├── requirements.txt           # Dependencias científicas en Python
 └── README.md                  # Este documento
 ```
 
 ---
 
-## 🚀 Inicio Rapido (Fase 2)
+## 🚀 Inicio Rápido
 
-Para desplegar el prototipo en tu maquina Linux o maquina virtual de pruebas:
+### En Windows (Desarrollo y pruebas):
+Solo haz **doble clic en `iniciar_entorno.bat`** y luego escribe:
+```cmd
+python src\test_pipeline.py
+```
 
-1. **Clonar el repositorio:**
-   ```bash
-   git clone https://github.com/devops09-gtr/tesis-upds-britney.git
-   cd tesis-upds-britney
-   ```
-2. **Crear entorno virtual de Python:**
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   ```
-3. **Revisar y ejecutar la guia de la Fase 2:** Sigue los pasos descritos en [`docs/GUIA_FASE_2.md`](docs/GUIA_FASE_2.md).
+### En Linux / Laboratorio (Entorno completo):
+```bash
+chmod +x setup_linux.sh
+./setup_linux.sh
+source venv/bin/activate
+python src/test_pipeline.py
+```
