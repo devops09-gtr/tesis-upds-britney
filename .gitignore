@@ -1,0 +1,21 @@
+# Entornos virtuales
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Logs de ejecucion crudos y temporales
+*.pcap
+*.pcapng
+/tmp/zeek_logs/
+experiments/logs/*.log
+*.csv
+
+# Modelos serializados grandes
+*.pkl
+*.joblib
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store
