@@ -1,0 +1,2 @@
+2026-11-25 12:49:38,109 [INFO] INCIDENTE DETECTADO - MAC: aa:bb:cc:dd:ee:01, IP: 192.168.1.150, Motivo: Deauth Flood Anomaly, Score: -0.010209884428677318
+2026-11-25 12:49:38,113 [INFO] [SIMULACION] Ejecutando: iptables -I FORWARD -m mac --mac-source aa:bb:cc:dd:ee:01 -j DROP
